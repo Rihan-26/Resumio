@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body{
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #d16a63, #000000, #343f4e);
+            overflow: hidden;
+            color: white;
+        }
+
+        .bg-blur{
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #2563eb;
+            filter: blur(140px);
+            opacity: 0.4;
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+        }
+
+        .bg-blur2{
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #7c3aed;
+            filter: blur(140px);
+            opacity: 0.4;
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .container{
+            position: relative;
+            z-index: 10;
+            width: 450px;
+            padding: 40px;
+            border-radius: 30px;
+            background: rgba(221, 54, 90, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(73, 0, 0, 0.493);
+            box-shadow: 0px 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .logo{
+            text-align: center;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        p{
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        input,
+        select{
+            width: 100%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            color: rgb(34, 24, 24);
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        option{
+            color: rgb(121, 111, 93);
+        }
+
+        input::file-selector-button{
+            background: #2563eb;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn{
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #c3cbdd, #0d0b11);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover{
+            transform: scale(1.03);
+            box-shadow: 0px 0px 25px rgba(104, 101, 109, 0.048);
+        }
+
+        .features{
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .feature-card{
+            background: rgba(255, 255, 255, 0.966);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .creator{
+
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    width: fit-content;
+}
+
+.creator h3{
+
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+.creator h2{
+
+    font-size: 30px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #93c5fd,
+        #c4b5fd
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 10px;
+}
+
+.creator p{
+
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bg-blur"></div>
+    <div class="bg-blur2"></div>
+
+    <div class="container">
+
+        <div class="logo">🎓🎓</div>
+
+        <h1>RESUMIO</h1>
+
+        <p>Smart Career Advisor using AI + NLP</p>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+
+            <label>Select Role</label>
+
+            <select name="role" required>
+
+                <option value="">Choose Your Career Path</option>
+
+                <option value="AI/ML Engineer">AI/ML Engineer</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer">Backend Developer</option>
+                <option value="Full Stack Developer">Full Stack Developer</option>
+                <option value="Python Developer">Python Developer</option>
+                <option value="Java Developer">Java Developer</option>
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Android Developer">Android Developer</option>
+                <option value="Flutter Developer">Flutter Developer</option>
+                <option value="Cyber Security Analyst">Cyber Security Analyst</option>
+
+            </select>
+
+            <label>Upload Resume</label>
+
+            <input type="file" name="resume" required>
+
+            <button type="submit" class="btn">
+                Analyze Resume 🔥
+            </button>
+
+        </form>
+
+        <div class="features">
+
+            <div class="feature-card">
+                🎯 Skill Detection
+            </div>
+
+            <div class="feature-card">
+                🧠 AI Analysis
+            </div>
+
+            <div class="feature-card">
+                📈 Career Roadmap
+            </div>
+
+            <div class="feature-card">
+                🗣️ Communication Score
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

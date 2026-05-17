@@ -1,0 +1,111 @@
+skill,weight
+
+python,8
+java,8
+c,6
+c++,7
+c#,7
+javascript,5
+typescript,6
+php,5
+ruby,5
+go,8
+golang,8
+rust,9
+swift,7
+kotlin,7
+
+html,2
+css,2
+bootstrap,3
+tailwind,4
+react,7
+angular,7
+vue,6
+nextjs,8
+
+nodejs,7
+expressjs,6
+flask,5
+django,7
+fastapi,8
+spring boot,9
+
+mysql,6
+postgresql,7
+mongodb,7
+sqlite,4
+oracle,7
+firebase,6
+redis,7
+
+sql,6
+
+machine learning,10
+deep learning,10
+nlp,10
+computer vision,10
+artificial intelligence,10
+data science,9
+tensorflow,9
+pytorch,9
+scikit-learn,8
+opencv,8
+pandas,7
+numpy,7
+matplotlib,5
+seaborn,5
+
+docker,9
+kubernetes,10
+jenkins,8
+github actions,7
+terraform,9
+ansible,8
+
+aws,10
+azure,9
+gcp,9
+
+git,5
+github,5
+linux,7
+bash,5
+
+cybersecurity,9
+ethical hacking,9
+penetration testing,9
+network security,8
+
+android development,7
+flutter,8
+react native,7
+
+dsa,8
+data structures,8
+algorithms,8
+problem solving,7
+oops,6
+dbms,6
+operating systems,6
+computer networks,6
+
+communication,5
+leadership,5
+teamwork,5
+problem-solving,6
+time management,4
+communication,5
+leadership,5
+teamwork,4
+problem solving,6
+decision making,4
+time management,4
+public speaking,5
+critical thinking,5
+adaptability,4
+team leadership,5
+decision making,5
+speaking,4
+writing skills,4
+speaking and writing skills,5
