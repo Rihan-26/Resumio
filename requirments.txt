@@ -2,4 +2,3 @@ flask
 pdfplumber
 python-docx
 rapidfuzz
-language-tool-python

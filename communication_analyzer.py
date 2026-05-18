@@ -1,42 +1,49 @@
-import language_tool_python
-
-
-tool = language_tool_python.LanguageTool('en-US')
-
-
 def analyze_communication(text):
 
-    matches = tool.check(text)
+    suggestions = []
 
-    mistakes = []
+    score = 100
 
-    ignore_words = [
-        "Possible spelling mistake found",
-        "too many consecutive spaces",
-        "repeated a whitespace"
-    ]
+    lines = text.splitlines()
+
+    for line in lines:
+
+        if len(line.strip()) > 120:
+
+            suggestions.append({
+
+                "incorrect": line[:40],
+
+                "message": "Sentence is too long. Try making it shorter."
+
+            })
+
+            score -= 5
 
 
-    for match in matches[:10]:
+    if "team leadership" in text.lower():
 
-        message = match.message
+        suggestions.append({
 
-        # skip useless resume warnings
-        if any(word.lower() in message.lower() for word in ignore_words):
-            continue
+            "incorrect": "Team Leadership",
 
-        mistakes.append({
+            "message": "Good leadership skill mentioned."
 
-            "message": message,
-
-            "incorrect": text[
-                match.offset :
-                match.offset + match.error_length
-            ]
         })
 
 
-    # better scoring
-    score = max(100 - (len(mistakes) * 5), 0)
+    if "communication" in text.lower():
 
-    return mistakes, score
+        suggestions.append({
+
+            "incorrect": "Communication",
+
+            "message": "Good communication skill detected."
+
+        })
+
+
+    if score < 0:
+        score = 0
+
+    return suggestions, score
