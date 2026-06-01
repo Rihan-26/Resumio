@@ -1,295 +1,219 @@
 <!DOCTYPE html>
-<html>
 
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
     <title>Resumio</title>
-    <h1>Ai Resume Analyser</h1>
-    <link rel="icon" href="/static/logo.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+```
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
 
-    <style>
-        .logo img{
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-    width: 110px;
-    height: 110px;
+    body{
+        font-family:'Poppins',sans-serif;
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#0f172a,#1e293b,#312e81);
+        overflow:hidden;
+        color:white;
+    }
 
-    object-fit: cover;
+    .bg-blur{
+        position:absolute;
+        width:350px;
+        height:350px;
+        background:#3b82f6;
+        filter:blur(140px);
+        opacity:.3;
+        border-radius:50%;
+        top:-100px;
+        left:-100px;
+    }
 
-    border-radius: 25px;
+    .bg-blur2{
+        position:absolute;
+        width:350px;
+        height:350px;
+        background:#8b5cf6;
+        filter:blur(140px);
+        opacity:.3;
+        border-radius:50%;
+        bottom:-100px;
+        right:-100px;
+    }
 
-    box-shadow:
-        0px 0px 30px rgba(59,130,246,0.8);
+    .container{
+        position:relative;
+        z-index:10;
+        width:520px;
+        padding:40px;
+        border-radius:30px;
+        background:rgba(15,23,42,.85);
+        backdrop-filter:blur(20px);
+        border:1px solid rgba(255,255,255,.08);
+        box-shadow:0 20px 50px rgba(0,0,0,.4);
+    }
 
-    transition: 0.3s;
-}
+    .logo{
+        text-align:center;
+        font-size:75px;
+        margin-bottom:10px;
+    }
 
-.logo img:hover{
+    h1{
+        text-align:center;
+        font-size:40px;
+        font-weight:700;
+        margin-bottom:10px;
+        background:linear-gradient(90deg,#60a5fa,#c084fc);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
 
-    transform: scale(1.05);
-}
+    p{
+        text-align:center;
+        color:#cbd5e1;
+        margin-bottom:25px;
+    }
 
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body{
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #d16a63, #000000, #343f4e);
-            overflow: hidden;
-            color: white;
-        }
+    label{
+        display:block;
+        margin:15px 0 8px;
+        font-weight:500;
+    }
 
-        .bg-blur{
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: #2563eb;
-            filter: blur(140px);
-            opacity: 0.4;
-            border-radius: 50%;
-            top: -100px;
-            left: -100px;
-        }
+    select,input{
+        width:100%;
+        padding:15px;
+        border-radius:15px;
+        border:1px solid rgba(255,255,255,.1);
+        background:rgba(255,255,255,.05);
+        color:white;
+        font-size:15px;
+        outline:none;
+    }
 
-        .bg-blur2{
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: #7c3aed;
-            filter: blur(140px);
-            opacity: 0.4;
-            border-radius: 50%;
-            bottom: -100px;
-            right: -100px;
-        }
+    option{
+        color:black;
+    }
 
-        .container{
-            position: relative;
-            z-index: 10;
-            width: 450px;
-            padding: 40px;
-            border-radius: 30px;
-            background: rgba(221, 54, 90, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(73, 0, 0, 0.493);
-            box-shadow: 0px 10px 40px rgba(0,0,0,0.5);
-        }
+    input::file-selector-button{
+        border:none;
+        padding:10px 15px;
+        border-radius:10px;
+        background:#3b82f6;
+        color:white;
+        cursor:pointer;
+    }
 
-        .logo{
-            text-align: center;
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
+    .btn{
+        width:100%;
+        padding:16px;
+        margin-top:20px;
+        border:none;
+        border-radius:15px;
+        background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+        color:white;
+        font-size:17px;
+        font-weight:600;
+        cursor:pointer;
+        transition:.3s;
+    }
 
-        h1{
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+    .btn:hover{
+        transform:translateY(-3px);
+    }
 
-        p{
-            text-align: center;
-            opacity: 0.8;
-            margin-bottom: 30px;
-        }
+    .features{
+        margin-top:30px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:15px;
+    }
 
-        label{
-            display: block;
-            margin-bottom: 10px;
-            margin-top: 20px;
-            font-weight: 500;
-        }
+    .feature-card{
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        padding:15px;
+        border-radius:15px;
+        text-align:center;
+        transition:.3s;
+    }
 
-        input,
-        select{
-            width: 100%;
-            padding: 15px;
-            border: none;
-            outline: none;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.1);
-            color: rgb(34, 24, 24);
-            font-size: 15px;
-            margin-bottom: 15px;
-        }
+    .feature-card:hover{
+        transform:translateY(-3px);
+        background:rgba(255,255,255,.08);
+    }
 
-        option{
-            color: rgb(121, 111, 93);
-        }
-
-        input::file-selector-button{
-            background: #2563eb;
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        .btn{
-            width: 100%;
-            padding: 16px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #c3cbdd, #0d0b11);
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover{
-            transform: scale(1.03);
-            box-shadow: 0px 0px 25px rgba(104, 101, 109, 0.048);
-        }
-
-        .features{
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .feature-card{
-            background: rgba(255, 255, 255, 0.966);
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 14px;
-        }
-        .creator{
-
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(255,255,255,0.15);
-
-    width: fit-content;
-}
-
-.creator h3{
-
-    opacity: 0.8;
-    margin-bottom: 8px;
-}
-
-.creator h2{
-
-    font-size: 30px;
-
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #93c5fd,
-        #c4b5fd
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    margin-bottom: 10px;
-}
-
-.creator p{
-
-    font-size: 16px;
-    opacity: 0.9;
-}
-
-    </style>
+</style>
+```
 
 </head>
 
 <body>
 
-    <div class="bg-blur"></div>
-    <div class="bg-blur2"></div>
+<div class="bg-blur"></div>
+<div class="bg-blur2"></div>
 
-    <div class="container">
+<div class="container">
 
-        <div class="logo">
+```
+<div class="logo">🎓</div>
 
-    <img src="/static/logo.png" alt="logo">
+<h1>RESUMIO</h1>
+
+<p>AI-Powered Resume Analyzer & Career Advisor</p>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+    <label>Select Role</label>
+
+    <select name="role" required>
+        <option value="">Choose Your Career Path</option>
+        <option value="AI/ML Engineer">AI/ML Engineer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Frontend Developer">Frontend Developer</option>
+        <option value="Backend Developer">Backend Developer</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+        <option value="Python Developer">Python Developer</option>
+        <option value="Java Developer">Java Developer</option>
+        <option value="Software Engineer">Software Engineer</option>
+        <option value="Android Developer">Android Developer</option>
+        <option value="Flutter Developer">Flutter Developer</option>
+        <option value="Cyber Security Analyst">Cyber Security Analyst</option>
+    </select>
+
+    <label>Upload Resume</label>
+
+    <input type="file" name="resume" required>
+
+    <button type="submit" class="btn">
+        Analyze Resume 🚀
+    </button>
+
+</form>
+
+<div class="features">
+
+    <div class="feature-card">🤖 AI Skill Matching</div>
+    <div class="feature-card">📊 Resume Score</div>
+    <div class="feature-card">🎯 Job Recommendations</div>
+    <div class="feature-card">🚀 Career Growth Tips</div>
+
+</div>
+```
 
 </div>
 
-        <h1>RESUMIO</h1>
-
-        <p>Smart Career Advisor using AI + NLP</p>
-
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-
-            <label>Select Role</label>
-
-            <select name="role" required>
-
-                <option value="">Choose Your Career Path</option>
-
-                <option value="AI/ML Engineer">AI/ML Engineer</option>
-                <option value="Data Analyst">Data Analyst</option>
-                <option value="Frontend Developer">Frontend Developer</option>
-                <option value="Backend Developer">Backend Developer</option>
-                <option value="Full Stack Developer">Full Stack Developer</option>
-                <option value="Python Developer">Python Developer</option>
-                <option value="Java Developer">Java Developer</option>
-                <option value="Software Engineer">Software Engineer</option>
-                <option value="Android Developer">Android Developer</option>
-                <option value="Flutter Developer">Flutter Developer</option>
-                <option value="Cyber Security Analyst">Cyber Security Analyst</option>
-
-            </select>
-
-            <label>Upload Resume</label>
-
-            <input type="file" name="resume" required>
-
-            <button type="submit" class="btn">
-                Analyze Resume 🔥
-            </button>
-
-        </form>
-
-        <div class="features">
-
-            <div class="feature-card">
-                🎯 Skill Detection
-            </div>
-
-            <div class="feature-card">
-                🧠 AI Analysis
-            </div>
-
-            <div class="feature-card">
-                📈 Career Roadmap
-            </div>
-
-            <div class="feature-card">
-                🗣️ Communication Score
-            </div>
-
-        </div>
-
-    </div>
-
 </body>
-
 </html>
